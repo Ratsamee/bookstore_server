@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def fetch_current_user
+    render :json => current_user
+  end
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    
   end
 
   # GET /users/1
@@ -15,6 +19,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    
   end
 
   # GET /users/1/edit
