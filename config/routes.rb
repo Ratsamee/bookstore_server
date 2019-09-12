@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     get '/users/current.json' => 'users#fetch_current_user'
     resources :users
   end
+  
 end

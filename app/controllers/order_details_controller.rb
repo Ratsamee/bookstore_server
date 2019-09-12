@@ -26,14 +26,10 @@ class OrderDetailsController < ApplicationController
   def create
     @order_detail = OrderDetail.new(order_detail_params)
 
-    respond_to do |format|
-      if @order_detail.save
-        format.html { redirect_to @order_detail, notice: 'Order detail was successfully created.' }
-        format.json { render :show, status: :created, location: @order_detail }
-      else
-        format.html { render :new }
-        format.json { render json: @order_detail.errors, status: :unprocessable_entity }
-      end
+    if @order_detail.save
+      render :json => @order_detail
+    else
+      render :json => @order_detail.errors
     end
   end
 

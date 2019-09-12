@@ -14,6 +14,6 @@
 class Order < ApplicationRecord
     validates :order_date, presence: true
     validates :user_id, presence: true
-    belongs_to :customer
+    belongs_to :user
     has_many :orderdetails
 end
